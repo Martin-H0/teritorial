@@ -1,27 +1,61 @@
-# Zápočtový program: *název vašeho programu*
+# Teritorial
 
-*Tento soubor slouží jako šablona. Vhodně ho upravte podle vašeho projektu. Text psaný kurzívou obsahuje instrukce pro vás – před odevzdáním je prosím odstraňte nebo nahraďte vlastním textem.*
+Zápočtový program - 2D strategická hra inspirovaná territorial.io. Single player proti botům, pixelová mapa, expanze území a populace.
 
 ## Specifikace
 
-*Sem napište stručnou specifikaci vašeho programu – co váš program má dělat (podobně jako jste mi psali do mailu). Stačí zhruba 1–2 odstavce.*
+Hráč ovládá stát na mapě z pevniny a vody. Roste mu populace, posílá expedice na sousední neutrální území nebo na nepřátele. Útok přes moře jde jen pravým tlačítkem (námořní výprava). Proti hráči hrají jednoduchí boti s náhodnými útoky.
 
-## *Doporučená struktura projektu*
+Výhra: ovládnout nastavené % pevniny na mapě (výchozí 70 %) nebo vyhnat všechny protivníky. Prohra: přijít o veškeré území.
 
-*Je vhodné v repozitáři oddělit zdrojové kódy vašeho programu od dokumentace (a případně testů, pokud je máte). Pro zdrojové kódy tedy vytvořte složku, v C# se nejčastěji pojmenovává podle jména projektu. Například pokud by se váš program jmenoval JMENO_PROJEKTU, tak budete mít složku `JMENO_PROJEKTU` a v ní `JMENO_PROJEKTU.csproj` a `Program.cs` a případně další `.cs` soubory.*
+Mapy se netvoří ve hře — jsou předpřipravené v `teritorial/maps/data/`. Editor map je jen pro vývojáře (Godot scény `map_01`, `map_02`, ...).
 
-*Pro dokumentaci je připravena složka `docs`, její obsah vhodně upravte.*
+## Struktura repozitáře
+
+```
+student-hornycma/
+  README.md           — tento soubor
+  docs/               — dokumentace pro uživatele a programátory
+  teritorial/         — Godot 4 projekt (C#)
+    project.godot
+    scenes/           — MainMenu, Game, editor map
+    Script/           — herní logika
+    maps/data/        — hotové mapy (.tres)
+    config/           — vyvážení hry (game_balance.tres)
+```
 
 ## Instalace a spuštění
 
-*Pokud je váš program v C#, stačí upravit JMENO_PROJEKTU níže a případně doplnit další informace ke spuštění (jestli má nějaké parametry, vstupní soubory, ...). Pokud je parametrů hodně nebo je potřeba nějaký speciální formát vstupních souborů, nechte tuto sekci jen stručnou a podrobněji to popište v uživatelské dokumentaci (a sem dejte odkaz). Pokud je program v jiném programovacím jazyce nebo pro spuštění vyžaduje instalaci nějakých knihoven či nástrojů, tuto sekci vhodně upravte, abych byl při kontrole schopen nainstalovat si vše potřebné a program spustit.*
+### Co potřebuješ
 
-Pro spuštění přejděte do složky `JMENO_PROJEKTU` a spusťte příkaz `dotnet run`.
+1. **Godot 4.x** s podporou **.NET** (na webu „Godot Engine - .NET“)
+2. **.NET SDK** 8 (nebo verze co Godot vyžaduje)
+
+### Spuštění v Godotu (doporučené)
+
+1. Otevři Godot -> **Import** -> složka `teritorial` (soubor `project.godot`)
+2. Po prvním otevření: horní lišta **Build** (kladivo), počkej na úspěšný build C#
+3. Stiskni **F5** - spustí se hlavní menu, vyber mapu, **Hrát**
+
+| Klávesa | Co dělá |
+|---------|---------|
+| **F5** | Hra od začátku (MainMenu -> výběr mapy) |
+| **F6** | Spustí právě otevřenou scénu v editoru |
+
+Editor mapy (jen pro tvorbu map): otevři `scenes/maps/map_01.tscn` (nebo map_02, map_03) -> **F6**.
+
+### Build z příkazové řádky
+
+```bash
+cd teritorial
+dotnet build
+```
+
+Když Godot hlásí chyby typu `InvalidCastException` u MapData, nejdřív udělej build (v Godotu nebo `dotnet build`) a případně **Project -> Reload Current Project**.
 
 ## Dokumentace
 
-*Tady bude rozcestník k dokumentaci k vašemu programu. Pokud je to potřeba, upravte odkazy na soubory s dokumentací. Pokud dokumentaci nepíšete v Markdownu, uveďte zde, kde ji najdu (např. odkaz na PDF soubor).*
+- [Uživatelská dokumentace](docs/user.md) - ovládání, menu, pravidla
+- [Programátorská dokumentace](docs/programmer.md) - struktura kódu, mapy, config
 
-* [Uživatelská dokumentace](docs/user.md)
-* [Ukázky použití](docs/examples.md)
-* [Programátorská dokumentace](docs/programmer.md)
+Hra nepotřebuje externí vstupní soubory od uživatele (mapy jsou v repozitáři).

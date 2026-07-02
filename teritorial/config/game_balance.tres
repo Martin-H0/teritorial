@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="GameConfig" format=3 uid="uid://cfa07w2xsgmjm"]
+
+[ext_resource type="Script" uid="uid://crm0e62ytin76" path="res://Script/Game/GameConfig.cs" id="1_cfg"]
+
+[resource]
+script = ExtResource("1_cfg")
+BotCount = 6
+SpawnBlobRadius = 6
+MaxPopPerPixel = 5
+GrowthRate = 0.07
+SlowdownPower = 2.8
+SoftCap = 0.995
+ClaimCostNeutral = 1.5
+WaterLossPerTile = 0.025
+EnemyDefenseFactor = 0.4
+ClaimPixelsPerTick = 30
+SettlerPopRatio = 0.6
+BotAttackPopMin = 0.16
+BotAttackPopMax = 1
+BotAttackChance = 0.7
+BotSendPercentMin = 25.0
+BotSendPercentMax = 30.0
+BotTargetAttempts = 12
+WinLandPercent = 0.7

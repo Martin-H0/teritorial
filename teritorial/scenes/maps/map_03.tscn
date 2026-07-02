@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cr7asyxh1b868"]
+
+[node name="Map03" type="Node2D" unique_id=1740583771]
+
+[node name="Preview" type="Sprite2D" parent="." unique_id=871024975]
+centered = false

@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgame01manager"]
+
+[ext_resource type="Script" path="res://Script/Game/GameController.cs" id="1_game"]
+[ext_resource type="Script" path="res://Script/Game/CameraController.cs" id="2_camera"]
+[ext_resource type="Resource" path="res://config/game_balance.tres" id="3_cfg"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_game")
+Config = ExtResource("3_cfg")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(256, 256)
+zoom = Vector2(1.2, 1.2)
+script = ExtResource("2_camera")
+MapSize = Vector2(512, 512)
