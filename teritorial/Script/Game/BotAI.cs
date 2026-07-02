@@ -5,7 +5,7 @@ using Teritorial.Map;
 
 namespace Teritorial.Game;
 
-// blbi boti 
+// blbi boti jen random utoky
 public sealed class BotAI
 {
 	private readonly TerrainGrid _terrain;

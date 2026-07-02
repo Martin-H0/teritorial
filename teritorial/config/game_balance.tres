@@ -1,24 +1,94 @@
-[gd_resource type="Resource" script_class="GameConfig" format=3 uid="uid://cfa07w2xsgmjm"]
+[gd_resource type="Resource" script_class="GameConfig" load_steps=2 format=3]
 
-[ext_resource type="Script" uid="uid://crm0e62ytin76" path="res://Script/Game/GameConfig.cs" id="1_cfg"]
+[ext_resource type="Script" path="res://Script/Game/GameConfig.cs" id="1_cfg"]
 
 [resource]
 script = ExtResource("1_cfg")
+
+; ktera mapa se nacte
+MapDataPath = "res://maps/data/map01.tres"
+
+; pocet botu
 BotCount = 6
+
+; velikost startu
 SpawnBlobRadius = 6
+
+; volno kolem spawnu
+SpawnClearanceRadius = 28
+
+; male ostrovy ignorovat
+MinIslandArea = 800
+
+; 0 = random spawn
+SpawnSeed = 0
+
+; pop na start
+StartingPopulation = 250.0
+
+; jak casto tick
+TickInterval = 0.25
+
+; max lidi na pixel
 MaxPopPerPixel = 5
-GrowthRate = 0.07
+
+; rychlost rustu
+GrowthRate = 0.070
+
+; brzdeni u maxima
 SlowdownPower = 2.8
+
+; nad timto % rust skoro nic
 SoftCap = 0.995
+
+; pod timto pomalu rostou
+MinDensityFactor = 0.25
+
+; sila na neutralni pixel
 ClaimCostNeutral = 1.5
+
+; utok na cizi
+ClaimCostEnemy = 10.0
+
+; ztrata na vode
 WaterLossPerTile = 0.025
+
+; obrana
 EnemyDefenseFactor = 0.4
+
+; px za tick
 ClaimPixelsPerTick = 30
+
+; min lidi na vylet
+MinExpeditionStrength = 5.0
+
+; kolik zustane na obsazenem px
 SettlerPopRatio = 0.6
+
+; max utoku hrace
+MaxPlayerExpeditions = 10
+
+; rychlost lodi
+NavalSpeed = 12.0
+
+; zrychleni pri presile
+MaxEnemySpeedMultiplier = 3.0
+
+; bot random cas
+BotThinkJitter = 2.0
+
+; kdy bot utoci (pop/max)
 BotAttackPopMin = 0.16
 BotAttackPopMax = 1
+
 BotAttackChance = 0.7
+
 BotSendPercentMin = 25.0
 BotSendPercentMax = 30.0
+
+MaxBotExpeditions = 2
 BotTargetAttempts = 12
+BotThinkInterval = 3.0
+
+; vyhra pri X % pevniny (0.7 = 70%)
 WinLandPercent = 0.7

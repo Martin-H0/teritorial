@@ -36,7 +36,7 @@ public sealed class OwnershipGrid
 	public static int TargetPixelsForRadius(int radius) =>
 		Godot.Mathf.RoundToInt(Godot.Mathf.Pi * radius * radius * 0.85f);
 
-	// bfs po pevnine kdy6 narazi na vodu hleda jinde
+	// bfs po pevnine, kdyz narazi na vodu hleda jinde
 	public int FillLandBlob(int cx, int cy, int targetPixels, int maxRadius, short ownerId, TerrainGrid terrain)
 	{
 		if (!terrain.IsClaimable(cx, cy))
@@ -90,7 +90,7 @@ public sealed class OwnershipGrid
 		}
 	}
 
-	// pro spawn kolik volne pevniny je pobliz
+	// pro spawn, kolik volne pevniny je pobliz
 	public static int CountReachableLand(int cx, int cy, int maxRadius, TerrainGrid terrain)
 	{
 		if (!terrain.IsClaimable(cx, cy))
