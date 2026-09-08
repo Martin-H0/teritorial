@@ -30,6 +30,18 @@ public partial class MainMenu : Control
 		AddChild(center);
 
 		var panel = new PanelContainer { CustomMinimumSize = new Vector2(360, 0) };
+		panel.AddThemeStyleboxOverride("panel", new StyleBoxFlat
+		{
+			BgColor = new Color(0.10f, 0.12f, 0.17f, 1f),
+			CornerRadiusTopLeft     = 8,
+			CornerRadiusTopRight    = 8,
+			CornerRadiusBottomLeft  = 8,
+			CornerRadiusBottomRight = 8,
+			ContentMarginLeft   = 20,
+			ContentMarginRight  = 20,
+			ContentMarginTop    = 16,
+			ContentMarginBottom = 16,
+		});
 		center.AddChild(panel);
 
 		var box = new VBoxContainer { Alignment = BoxContainer.AlignmentMode.Center };
