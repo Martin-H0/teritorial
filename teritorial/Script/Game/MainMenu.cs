@@ -10,6 +10,7 @@ public partial class MainMenu : Control
 
 	private OptionButton _mapSelect = null!;
 	private readonly List<string> _mapPaths = new();
+	private Control? _settingsOverlay;
 
 	public override void _Ready()
 	{
@@ -59,8 +60,18 @@ public partial class MainMenu : Control
 		buttons.AddChild(quitBtn);
 		box.AddChild(buttons);
 
+		// Tlačítko Nastavení – celá šířka panelu
+		box.AddChild(new HSeparator());
+		var settingsBtn = new Button
+		{
+			Text = "⚙  Nastavení",
+			CustomMinimumSize = new Vector2(280, 36),
+		};
+		box.AddChild(settingsBtn);
+
 		startBtn.Pressed += OnStart;
 		quitBtn.Pressed += OnQuit;
+		settingsBtn.Pressed += OnOpenSettings;
 
 		PopulateMaps();
 		if (_mapPaths.Count == 0)
@@ -86,6 +97,8 @@ public partial class MainMenu : Control
 		string file = dir.GetNext();
 		while (file.Length > 0)
 		{
+			if (file.EndsWith(".remap"))
+                file = file[..^".remap".Length];
 			if (!dir.CurrentIsDir() && file.EndsWith(".tres"))
 			{
 				string path = $"res://maps/data/{file}";
@@ -121,4 +134,29 @@ public partial class MainMenu : Control
 	}
 
 	private void OnQuit() => GetTree().Quit();
+
+	private void OnOpenSettings()
+	{
+		// Pokud panel už existuje, jen ho zobrazíme
+		if (_settingsOverlay != null)
+		{
+			_settingsOverlay.Visible = true;
+			return;
+		}
+
+		var settings = new SettingsMenu
+		{
+			AnchorsPreset = (int)LayoutPreset.FullRect,
+			AnchorRight = 1f,
+			AnchorBottom = 1f,
+		};
+		settings.OnClose = () =>
+		{
+			if (_settingsOverlay != null)
+				_settingsOverlay.Visible = false;
+		};
+
+		AddChild(settings);
+		_settingsOverlay = settings;
+	}
 }

@@ -127,6 +127,18 @@ public partial class GameConfig : Resource
 
 	public static GameConfig LoadOrDefault(string path = null)
 	{
+		// Nejdřív zkontrolujeme uložená nastavení z in-game menu
+		const string userPath = "user://game_balance_user.tres";
+		if (path == null && ResourceLoader.Exists(userPath))
+		{
+			var userCfg = ResourceLoader.Load<GameConfig>(userPath);
+			if (userCfg != null)
+			{
+				GD.Print($"GameConfig načten z uložených nastavení ({userPath})");
+				return userCfg;
+			}
+		}
+
 		path ??= DefaultPath;
 		if (ResourceLoader.Exists(path))
 		{
