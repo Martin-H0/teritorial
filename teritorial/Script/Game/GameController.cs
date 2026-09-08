@@ -22,7 +22,9 @@ public partial class GameController : Node2D
 
 	public override void _Ready()
 	{
-		_cfg = Config ?? GameConfig.LoadOrDefault();
+		// Vždy načteme přes LoadOrDefault(), které zkontroluje user:// nastavení z menu.
+		// Config ze scény použijeme jen pokud LoadOrDefault() nic nenajde (nemělo by nastat).
+		_cfg = GameConfig.LoadOrDefault() ?? Config ?? new GameConfig();
 
 		string mapPath = GameSession.SelectedMapPath ?? _cfg.MapDataPath;
 		GameSession.Clear();
