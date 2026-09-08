@@ -16,16 +16,17 @@ public partial class GameConfig : Resource
 	// spawny
 
 	[ExportGroup("Spawny")]
-	[Export(PropertyHint.Range, "0,8,1")]
+	// Horní limit 50 – fyzický limit je počet dostupných spawnů na mapě
+	[Export(PropertyHint.Range, "0,50,1")]
 	public int BotCount { get; set; } = 2;
 
-	[Export(PropertyHint.Range, "4,32,1")]
+	[Export(PropertyHint.Range, "4,64,1")]
 	public int SpawnBlobRadius { get; set; } = 12;
 
-	[Export(PropertyHint.Range, "8,64,1")]
+	[Export(PropertyHint.Range, "8,128,1")]
 	public int SpawnClearanceRadius { get; set; } = 28;
 
-	[Export(PropertyHint.Range, "100,5000,50")]
+	[Export(PropertyHint.Range, "100,20000,50")]
 	public int MinIslandArea { get; set; } = 800;
 
 	// 0 = random seed
@@ -35,7 +36,7 @@ public partial class GameConfig : Resource
 	// populace
 
 	[ExportGroup("Populace")]
-	[Export(PropertyHint.Range, "1,2000,1")]
+	[Export(PropertyHint.Range, "1,10000,50")]
 	public float StartingPopulation { get; set; } = 250f;
 
 	[Export(PropertyHint.Range, "0.05,2,0.05")]
@@ -71,7 +72,7 @@ public partial class GameConfig : Resource
 	[Export(PropertyHint.Range, "0,2,0.05")]
 	public float EnemyDefenseFactor { get; set; } = 0.4f;
 
-	[Export(PropertyHint.Range, "1,100,1")]
+	[Export(PropertyHint.Range, "1,500,1")]
 	public int ClaimPixelsPerTick { get; set; } = 12;
 
 	[Export(PropertyHint.Range, "1,200,1")]
@@ -80,7 +81,7 @@ public partial class GameConfig : Resource
 	[Export(PropertyHint.Range, "0.1,1,0.05")]
 	public float SettlerPopRatio { get; set; } = 0.6f;
 
-	[Export(PropertyHint.Range, "1,20,1")]
+	[Export(PropertyHint.Range, "1,50,1")]
 	public int MaxPlayerExpeditions { get; set; } = 10;
 
 	[Export(PropertyHint.Range, "1,50,1")]
@@ -113,10 +114,10 @@ public partial class GameConfig : Resource
 	[Export(PropertyHint.Range, "10,100,1")]
 	public float BotSendPercentMax { get; set; } = 35f;
 
-	[Export(PropertyHint.Range, "1,10,1")]
+	[Export(PropertyHint.Range, "1,20,1")]
 	public int MaxBotExpeditions { get; set; } = 2;
 
-	[Export(PropertyHint.Range, "5,80,1")]
+	[Export(PropertyHint.Range, "1,200,1")]
 	public int BotTargetAttempts { get; set; } = 25;
 
 	// vyhra

@@ -64,7 +64,7 @@ public partial class MainMenu : Control
 		box.AddChild(new HSeparator());
 		var settingsBtn = new Button
 		{
-			Text = "⚙  Nastavení",
+			Text = "Nastaveni",
 			CustomMinimumSize = new Vector2(280, 36),
 		};
 		box.AddChild(settingsBtn);
